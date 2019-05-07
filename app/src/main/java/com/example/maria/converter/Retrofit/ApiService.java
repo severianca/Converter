@@ -1,8 +1,7 @@
-package com.example.maria.converter;
+package com.example.maria.converter.Retrofit;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
-import retrofit2.http.Query;
 
 public interface ApiService {
     @GET("/latest")

@@ -1,4 +1,4 @@
-package com.example.maria.converter;
+package com.example.maria.converter.Retrofit;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

@@ -1,4 +1,6 @@
-package com.example.maria.converter;
+package com.example.maria.converter.Retrofit;
+
+import com.example.maria.converter.Retrofit.ApiService;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;

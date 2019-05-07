@@ -1,5 +1,6 @@
-package com.example.maria.converter;
+package com.example.maria.converter.Retrofit;
 
+import com.example.maria.converter.Retrofit.Rates;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
