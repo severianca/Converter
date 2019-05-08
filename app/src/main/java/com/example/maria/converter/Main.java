@@ -29,11 +29,13 @@ public class Main extends AppCompatActivity implements OnClickListener {
     private Timer timer;
     public Double[] ratio;
     public EditText valueText;
-    public int value;
+    public double value;
     public String[] converter;
 
     public ListAdapter adapter;
     public ListView listCountry;
+
+    public Boolean flag;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,27 +45,32 @@ public class Main extends AppCompatActivity implements OnClickListener {
         valueText = (EditText) findViewById(R.id.value1);
         valueText.setOnClickListener(this);
 
-        converter = new String[7];
-        ratio = new Double[7];
+
+        converter = new String[13];
+        ratio = new Double[13];
 
         startTimer();
 
-        String[] country = {"BGN", "NZD", "ILS", "RUB", "CAD", "PHP", "CHF"};
-        String[] nameCountry = {"Bulgaria",
-                                "new Zerland",
-                                "Israel",
-                                "Russia",
-                                "Canada",
-                                "Philippines",
-                                "Switzerland"};
+
+        String[] country = getResources().getStringArray(R.array.country);
+        String[] nameCountry = getResources().getStringArray(R.array.nameCountry);
+
+
         int[] image = { R.drawable.bulgaria,
                         R.drawable.newzealand,
                         R.drawable.israel,
                         R.drawable.russia,
                         R.drawable.canada,
                         R.drawable.philippines,
-                        R.drawable.switzerland
+                        R.drawable.switzerland,
+                        R.drawable.australia,
+                        R.drawable.japan,
+                        R.drawable.turkey,
+                        R.drawable.china,
+                        R.drawable.malaysia,
+                        R.drawable.thailand
                         };
+
 
         adapter = new CustomAdapter(this, image, country, nameCountry, converter);
         listCountry = (ListView) findViewById(R.id.listValuta);
@@ -88,10 +95,17 @@ public class Main extends AppCompatActivity implements OnClickListener {
                         ratio[4] = response.body().getRates().getCAD();
                         ratio[5] = response.body().getRates().getPHP();
                         ratio[6] = response.body().getRates().getCHF();
+                        ratio[7] = response.body().getRates().getAUD();
+                        ratio[8] = response.body().getRates().getJPY();
+                        ratio[9] = response.body().getRates().getTRY();
+                        ratio[10] = response.body().getRates().getHKD();
+                        ratio[11] = response.body().getRates().getMYR();
+                        ratio[12] = response.body().getRates().getTHB();
+
                     }
                     @Override
                     public void onFailure(Call<ValutaList> call, Throwable t) {
-                        Toast.makeText(getApplicationContext(), "An error occurred during networking", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "ошибка подключения к интернету", Toast.LENGTH_SHORT).show();
                     }
                 });
             }
@@ -102,11 +116,36 @@ public class Main extends AppCompatActivity implements OnClickListener {
 
     @Override
     public void onClick(View v) {
-        for (int i =0; i<7; i++){
-            value = Integer.parseInt(valueText.getText().toString());
-            converter[i] = Double.toString((double) (ratio[i] * value));
+        /*if (valueText.length()==0){
+            //значит, ничего не введено (оповестим об этом человека)
+            Toast.makeText(getApplicationContext(), "введите необходимое число для конвертации", Toast.LENGTH_SHORT).show();
+        }*/
+
+        flag=true;
+
+        try {
+            value = Double.parseDouble(valueText.getText().toString());
+        } catch (NumberFormatException e){
+            if (valueText.length()==0) {
+                Toast.makeText(getApplicationContext(), "введите необходимое число для конвертации", Toast.LENGTH_SHORT).show();
+            }
+            else {
+                Toast.makeText(getApplicationContext(), "введите число через точку", Toast.LENGTH_SHORT).show();
+            }
+
+            flag= false;
         }
 
-        listCountry.setAdapter(adapter);
+        if (flag) {
+
+            for (int i = 0; i < ratio.length; i++) {
+                value = Double.parseDouble(valueText.getText().toString());
+                converter[i] = String.format("%.3f", ratio[i] * value);
+            }
+            listCountry.setAdapter(adapter);
+
+        }
     }
+
+
 }

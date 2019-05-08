@@ -1,3 +1,41 @@
 <resources>
     <string name="app_name">Converter</string>
+    <string-array name="country">
+        <item>BGN</item>
+        <item>NZD</item>
+        <item>ILS</item>
+        <item>RUB</item>
+        <item>CAD</item>
+        <item>PHP</item>
+        <item>CHF</item>
+        <item>AUD</item>
+        <item>JPY</item>
+        <item>TRY</item>
+        <item>HKD</item>
+        <item>MYR</item>
+        <item>THB</item>
+    </string-array>
+    <string-array name="nameCountry">
+        <item>Bulgaria</item>
+        <item>new Zerland</item>
+        <item>Israel</item>
+        <item>Russia</item>
+        <item>Canada</item>
+        <item>Philippines</item>
+        <item>Switzerland</item>
+        <item>Australia</item>
+        <item>Japan</item>
+        <item>Turkey</item>
+        <item>China</item>
+        <item>Malaysia</item>
+        <item>Thailand</item>
+    </string-array>
+
+
 </resources>
+
+
+
+
+
+

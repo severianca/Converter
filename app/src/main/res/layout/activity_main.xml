@@ -7,26 +7,38 @@
     android:orientation="vertical"
     tools:context=".Main">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <ImageView
-            android:id="@+id/imageView1"
-            android:layout_width="wrap_content"
+
+     <RelativeLayout
+
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:src = "@drawable/europeanunion" />
+            tools:ignore="ExtraText">
+
+            <ImageView
+                android:id="@+id/imageView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft = "true"
+                android:layout_marginLeft = "25dp"
+                android:src = "@drawable/europeanunion" />
+
+
 
         <LinearLayout
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="3"
+            android:layout_marginLeft = "25dp"
+            android:layout_toRightOf = "@+id/imageView1"
+
             android:orientation="vertical">
             <TextView
                 android:id="@+id/textCountry1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
                 android:text = "EUR"/>
 
             <TextView
@@ -35,23 +47,32 @@
                 android:layout_height="wrap_content"
                 android:text="Europa"/>
 
-
         </LinearLayout>
 
 
-        <EditText
-            android:id="@+id/value1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:inputType="phone" />
 
+            <EditText
+                android:id="@+id/value1"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight = "40sp"
+                android:layout_alignParentRight = "true"
+                android:textSize="20sp"
+                android:inputType="phone" />
 
-    </LinearLayout>
+        </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/colorPrimaryDark"
+     />
 
 
     <ListView
         android:id="@+id/listValuta"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
+
 </LinearLayout>
